@@ -51,6 +51,10 @@ class Article extends Base
     {
         $article = \app\index\model\Article::cache('article_'.$id)->getByArtId($id);
 
+        if (empty($article)) {
+            return '';
+        }
+        
         View::assign('article', $article);
 
         View::assign('title', $article->art_title);
